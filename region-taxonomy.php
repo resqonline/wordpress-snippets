@@ -1,7 +1,11 @@
 <?php
-// Register Taxonomy Region with terms for Land and Bundesland or Kanton
+/*
+ * Register Taxonomy Region with terms for Land and Bundesland or Kanton for the DACH region
+ *
+ */
 function region_terms() {
-    wp_insert_term('Deutschland', 'region', array( 'slug' => 'de')); // if you use this short slug, pay attention if you use a multi-language plugin! otherwise change it to something different
+	// if you use this short slug for the country, pay attention if you use a multi-language plugin! otherwise change it to something different 
+	wp_insert_term('Deutschland', 'region', array( 'slug' => 'de')); 
     wp_insert_term('Österreich', 'region', array( 'slug' => 'at'));
     wp_insert_term('Schweiz', 'region', array( 'slug' => 'ch'));
 
