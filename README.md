@@ -2,6 +2,11 @@
 Useful functions for your WordPress theme or plugin
 
 
+* **useful-functions.php**
+
+some simple lines to include in your functions file to extend the wordpress experience
+
+
 * **region-taxonomy.php**
 
 for adding taxonomy "Region" including terms and sub-terms for DACH-region
