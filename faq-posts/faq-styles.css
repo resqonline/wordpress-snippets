@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------
+## FAQ Styles
+--------------------------------------------------------------*/
+
+/* If you do not already have FontAwesome installed in your theme, make sure, it is included! Otherwise you will not see any symbols. */
+
+h2.faq-main-title {
+  font-size: inherit;
+  font-weight: 600;
+  margin-top: 0.5em;
+}
+.faq-entry{
+   border-top: none !important;
+   border-right: none !important;
+   border-left: none !important;
+   border-bottom: thin solid #ddd !important;
+   margin-bottom: 1em !important;
+   padding-bottom: 0px !important;
+}
+.faq-content {
+  color: #888;
+  display: none;
+  font-size: 0.9rem;
+  word-break: normal;
+}
+.faq-title {
+  -moz-user-select: none;
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+  outline-style: none;
+  padding: 1em 0 1.5em !important;
+}
+.faq-title.close-faq{
+   cursor: pointer;
+}
+.faq-title.close-faq:before{
+   position: relative;
+   font-family: 'FontAwesome';
+   content: '\f105';
+   float: right;
+   text-align: center;
+   width: 1em;
+}
+.faq-title.open-faq{
+   cursor: pointer;
+}
+.faq-title.open-faq:before{
+   position: relative;
+   font-family: 'FontAwesome';
+   content: '\f107';
+   float: right;
+   text-align: center;
+   width: 1em;
+}
+.faq-entry p{
+
+}
+.faq-entry ul{
+
+}
+.faq-entry ul li{
+
+}
