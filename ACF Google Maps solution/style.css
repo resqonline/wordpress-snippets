@@ -1,0 +1,29 @@
+/**
+ * Put these styles in your theme or plugin style.css
+ */
+
+#mapwrap {
+  height: 400px;
+  margin: 1em auto 2em auto;
+  z-index: 0;
+}
+
+/* this displays the single post map in the background in full width and height */
+.single-post #mapwrap.single_post_map{
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  z-index: -1;
+  position: fixed;
+}
+
+.acf-map {
+  width: 100%;
+  height: inherit;
+}
+
+/* fixes potential theme css conflict */
+.acf-map img {
+  max-width: inherit !important;
+  box-shadow: none !important;
+}

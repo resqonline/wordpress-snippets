@@ -1,0 +1,1 @@
+This folder contains several files with comments to show, how you can include ACF Google Maps in a good way. Feel free to comment or add suggestions on the files.
