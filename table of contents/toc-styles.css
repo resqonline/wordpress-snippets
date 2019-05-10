@@ -1,0 +1,48 @@
+/**
+ *
+ * use whatever CSS you like, a structured numbered ol list can be styled like this:
+ *
+**/
+
+ol {
+  list-style-type: none;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+}
+
+ol > li {
+  display: table;
+  counter-increment: item;
+}
+
+ol > li:before {
+  content: counters(item, ".") ". ";
+  display: table-cell;
+  padding-right: 0.5em;    
+}
+
+li > ol {
+	margin-top: 1em;
+}
+
+li ol > li:before {
+  content: counters(item, ".") " ";
+}
+
+/* Table of Contents */
+.rq-toc {
+  margin-bottom: 2em;
+}
+.rq-toc-title{
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 1em;
+  line-height: normal;
+}
+.rq-toc li {
+  line-height: normal;
+}
+.rq-toc-list .current > a{
+  color: #cc3300;
+}
