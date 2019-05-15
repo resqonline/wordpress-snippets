@@ -3,32 +3,9 @@
  * Credit Note: This plugin is based on WP TOC Plugin
  * by Brendon Boshell http://infinity-infinity.com/
  * With several improvement such as support for paginated content, etc.
- * by David Chandra Purnama http://genbumedia.com/plugins/rq-toc/
+ * by David Chandra Purnama http://genbumedia.com/plugins/fx-toc/
  * and by Regina Gschladt https://www.resqonline.eu/
 **/
-
-/**
- * Content Filters
- * @since 0.1.0
-**/
-/* filter the content */
-add_filter( 'the_content', 'rq_toc_filter_content' );
-/**
- * Add ID in each heading in content
- * @since 0.1.0
- */
-function rq_toc_filter_content( $content ){
-	/* Only in singular and shortcode exist in content */
-	if ( is_single() && !is_admin() ) {
-		$content = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches ) {
-			if ( ! stripos( $matches[0], 'id=' ) ) :
-				$matches[0] = $matches[1] . $matches[2] . ' id="' . sanitize_title( $matches[3] ) . '">' . $matches[3] . $matches[4];
-			endif;
-			return $matches[0];
-		}, $content );
-	    return $content;	
-	}
-}
 
 /**
  * Shortcode Utility Functions
@@ -120,7 +97,7 @@ function rq_toc_shortcode( $atts ){
 	$default_args = apply_filters( 'rq_toc_default_args', array(
 		'depth'          => 6,
 		'list'           => 'ol',
-		'title'          => __( 'Table of Contents', 'rq-toc' ),
+		'title'          => __( 'Inhaltsverzeichnis', 'rq-toc' ),
 		'title_tag'      => 'div',
 	) );
 	$attr = shortcode_atts( $default_args, $atts );
@@ -139,7 +116,7 @@ function rq_toc_build_toc( $content, $args ){
 	$default_args = apply_filters( 'rq_toc_default_args', array(
 		'depth'          => 6,
 		'list'           => 'ol',
-		'title'          => __( 'Table of Contents', 'rq-toc' ),
+		'title'          => __( 'Inhaltsverzeichnis', 'rq-toc' ),
 		'title_tag'      => 'div',
 	) );
 	$attr = wp_parse_args( $args, $default_args );
@@ -259,6 +236,49 @@ function rq_toc_build_toc( $content, $args ){
 	}
 	/* display */
 	return $out;
+}
+
+
+/**
+ * Content Filters
+ * @since 0.1.0
+**/
+
+/* filter the content */
+add_filter( 'the_content', 'rq_toc_filter_content' );
+
+/**
+ * Add ID in each heading in content
+ * @since 0.1.0
+ */
+function rq_toc_filter_content( $content ){
+
+	/* Only in singular and shortcode exist in content */
+	if ( !is_admin() && is_singular() ) {
+		$content = rq_toc_add_span_to_headings( $content );
+	}
+	return $content;
+}
+
+/**
+ * Add span with ID to each heading
+ * @since 0.1.0
+ */
+function rq_toc_add_span_to_headings( $content ){
+	rq_toc_sc_unique_names_reset(); // reset num
+	$content = preg_replace_callback( "#<(h[1-6]).*?>(.*?)</h[1-6]>#i", "rq_toc_heading_anchor", $content );
+	return $content;
+}
+
+/**
+ * Helper: Add span with ID as target for anchor text in each the heading.
+ * @since 0.1.0
+ */
+function rq_toc_heading_anchor( $match ) {
+	$name = rq_toc_sc_get_unique_name( $match[2] );
+	$heading = $match[1];
+	$text = $match[2];
+	return "<{$heading} " . 'id="' . sanitize_title( $name ) . '">' . $text . "</{$heading}>";
 }
 
 
