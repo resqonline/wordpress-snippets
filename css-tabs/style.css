@@ -1,0 +1,50 @@
+/**
+ * Tabs Styles
+ * this uses flex for the container, which means we need a fixed value for the height
+ * see accompanying adjust.js for a simple jquery to adjust the outer height accordingly!
+ */
+.tabs {
+	display: flex;
+	flex-wrap: wrap;
+	min-height: 300px;
+}
+.tabs label {
+	order: 1;
+	display: inline-block;
+	padding: 0.3rem 0.2rem;
+	cursor: pointer;
+	font-weight: 300;
+	transition: border ease 0.2s;
+	border-bottom: 1px solid;
+	margin-right: 1rem;
+}
+.tabs .tab-content {
+	order: 99;
+	width: 100%;
+	display: none;
+	padding: 2rem 0;
+	position: absolute;
+	left: 0;
+	top: 2rem;
+}
+.tabs input[type="radio"] {
+	display:none;
+}
+.tabs input[type="radio"]:checked ~ label {
+	border-bottom: 3px solid;
+	font-weight: normal;
+}
+.tabs input[type="radio"]:checked ~ .tab-content {
+	display: block;
+}
+@media (max-width: 45em) {
+  .tabs .tab-content,
+  .tabs label {
+    order: initial;
+  }
+  .tabs label {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0.2rem;
+  }
+}
