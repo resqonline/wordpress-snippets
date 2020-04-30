@@ -1,0 +1,56 @@
+/*
+ * Add these styles to your theme's stylesheet
+ */
+.video-box {
+	background-position: top right; /*change this to whatever fits best with your style*/
+	background-size: cover;
+	position: relative;
+}
+.video-overlay{
+	background-size: cover;
+	background-position: top right; /*change this to whatever fits best with your style*/
+	position: absolute;
+	opacity: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: opacity 1s ease-in-out;
+}
+.video-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.video-wrapper > iframe {
+	width: 100%;
+	height: 100%;
+}
+.video-box.videoactive .video-overlay{
+	opacity: 0;
+	display: none;
+
+}
+.video-play-button {
+	position: relative;
+	text-align: center;
+	font-size: 50px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	padding: 3px 0 0 10px;
+	background: rgba(0,0,0,0.35);
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	line-height: 80px;
+	color: #fff;
+	z-index: 1;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.video-play-button::before{
+	content: "▶";
+}
