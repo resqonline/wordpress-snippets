@@ -40,4 +40,16 @@ function logo_filter_login_head() {
 }
 add_action( 'login_head', 'logo_filter_login_head', 100 );
 
+// Add home url to custom logo on login screen instead of WP url
+add_filter( 'login_headerurl', 'my_login_logo_url', 10, 1 );
+function my_login_logo_url( $url ){
+    return home_url();
+}
+
+// Add your blog site title to login logo instead of WP
+add_filter( 'login_headertext', 'my_login_logo_url_title' );
+function my_login_logo_url_title(){
+    return esc_html( get_bloginfo( 'name' ) );
+}
+
 ?>
