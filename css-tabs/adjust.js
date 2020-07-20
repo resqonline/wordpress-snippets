@@ -6,7 +6,7 @@
 			var height = $(this).outerHeight();
 			var target = $(this).parent().parent();
 			if ( target.css('min-height') < height + 'px'){
-				console.log( height, target.css('min-height') );
+				//console.log( height, target.css('min-height') );
 				target.css('min-height', height + 'px' );
 			}
 		});
