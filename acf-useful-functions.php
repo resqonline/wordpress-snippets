@@ -4,6 +4,15 @@
  * These examples enhance ACF Advanced Custom Fields functionality
  */
 
+// Limit checkbox field choices
+function only_allow_3($valid, $value, $field, $input) {
+  if (count($value) > 3) {
+    $valid = 'Limit your choices to only 3!';
+  }
+  return $valid;
+}
+add_filter('acf/validate_value/name=my_field_name', 'only_allow_3', 20, 4);
+
 // Change acf_form post title field label
 function rq_post_title_acf_name( $field ) {
 	if ( ! is_admin() ) { // we only want to change this for the frontend form
