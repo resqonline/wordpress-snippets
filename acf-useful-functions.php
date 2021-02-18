@@ -41,7 +41,7 @@ add_filter('acf/load_field/name=_post_content', 'rq_post_content_acf_name');
 	# BEGIN Download redirect
 	<IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?mydomain\.com/.*$ [NC]
+	RewriteCond expr "! %{HTTP_REFERER} -strmatch '*://%{HTTP_HOST}/*'"
 	RewriteCond %{REQUEST_URI} ^(.*?/?)wp-content/uploads/downloads/.* [NC]
 	RewriteRule ^wp-content/uploads/downloads/(.+)$ index.php?post_type=download_entry&p=$1 [L,QSA]
 	</IfModule>
